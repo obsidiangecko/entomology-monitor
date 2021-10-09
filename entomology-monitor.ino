@@ -10,7 +10,7 @@
 #include <ESP8266WiFi.h>
 #include "ThingsBoard.h" //Version 0.2.0 - not compatible with 0.4.0 as at 3/10/21
 
-#define WIFI_AP "AP_NAME"
+#define WIFI_AP "WIRELESS_AP"
 #define WIFI_PASSWORD "PASSWORD"
 
 #define TOKEN "oPL81uLk9wv9bFQwHigC"
@@ -51,6 +51,9 @@ void loop() {
   }
 
   tb.loop();
+  delay(500); //allow update to Thingsboard to complete prior to sleep
+  // ESP8266 Deep Sleep Mode enabled - 100 seconds = 
+  ESP.deepSleep(10e7);
 }
 
 void getAndSend(){
